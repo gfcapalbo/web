@@ -328,12 +328,17 @@ openerp.web_advanced_search_x2x = function(instance)
     })
     instance.web.PermanentSearchView = instance.web.SearchView.include({
         start: function() 
-              {    this._super();
+              {
+                   this._super();      
                    instance.web.bus.on('click', this, function(ev) {
-                   if ($(ev.target).parents('.oe_searchview').length === 0) 
-                        {
-                          this.$el.addClass('oe_searchview_open_drawer');
-                        }
+                   if (typeof ev.target.attributes.class != 'undefined')
+                          {
+                           curr_class = ev.target.attributes.class.value;
+                           if ((curr_class == "oe_button oe_selectcreatepopup-search-select oe_highlight") || (curr_class == "oe_highlight oe_selectcreatepopup-search-select-domain"))
+                                    {
+                                  this.$el.addClass('oe_searchview_open_drawer');
+                                     }
+                          }
                   })
               },
          });

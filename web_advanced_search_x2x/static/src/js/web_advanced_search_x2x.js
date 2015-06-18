@@ -326,5 +326,16 @@ openerp.web_advanced_search_x2x = function(instance)
             return result;
         },
     })
-}
+    instance.web.PermanentSearchView = instance.web.SearchView.include({
+        start: function() 
+              {    this._super();
+                   instance.web.bus.on('click', this, function(ev) {
+                   if ($(ev.target).parents('.oe_searchview').length === 0) 
+                        {
+                          this.$el.addClass('oe_searchview_open_drawer');
+                        }
+                  })
+              },
+         });
+  }
 

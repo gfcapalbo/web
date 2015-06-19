@@ -54,14 +54,14 @@ openerp.web_advanced_search_x2x = function(instance)
             .on('change', this.proxy('operator_changed'));
             return this._super.apply(this, arguments).then(
                 this.proxy(this.operator_changed));
-            this.$el.addClass('oe_searchview_open_drawer');
         },
         get_field_desc: function()
         {
             return this.field;
         },
         create_searchfield_node: function()
-        {
+        { 
+            console.log(this.field.name)
             return {
                 attrs: {
                     name: this.field.name,
@@ -336,7 +336,9 @@ openerp.web_advanced_search_x2x = function(instance)
                            curr_class = ev.target.attributes.class.value;
                            if ((curr_class == "oe_button oe_selectcreatepopup-search-select oe_highlight") || (curr_class == "oe_highlight oe_selectcreatepopup-search-select-domain"))
                                     {
-                                  this.$el.addClass('oe_searchview_open_drawer');
+                                     if (typeof this.$el != 'undefined'){
+                                        this.$el.addClass('oe_searchview_open_drawer');
+                                         }
                                      }
                           }
                   })

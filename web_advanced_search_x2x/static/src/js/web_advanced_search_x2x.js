@@ -61,7 +61,6 @@ openerp.web_advanced_search_x2x = function(instance)
         },
         create_searchfield_node: function()
         { 
-            console.log(this.field.name)
             return {
                 attrs: {
                     name: this.field.name,
@@ -326,12 +325,14 @@ openerp.web_advanced_search_x2x = function(instance)
             return result;
         },
     })
+
+
     instance.web.PermanentSearchView = instance.web.SearchView.include({
         start: function() 
-              {
-                   this._super();      
-                   instance.web.bus.on('click', this, function(ev) {
-                   if (typeof ev.target.attributes.class != 'undefined')
+              {   var self = this;
+                  var p = this._super();
+                  instance.web.bus.on('click', this, function(ev) {
+                  if (typeof ev.target.attributes.class != 'undefined') 
                           {
                            curr_class = ev.target.attributes.class.value;
                            if ((curr_class == "oe_button oe_selectcreatepopup-search-select oe_highlight") || (curr_class == "oe_highlight oe_selectcreatepopup-search-select-domain"))
@@ -342,6 +343,7 @@ openerp.web_advanced_search_x2x = function(instance)
                                      }
                           }
                   })
+                  return $.when(p,this.ready);
               },
          });
   }

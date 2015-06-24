@@ -333,31 +333,31 @@ openerp.web_advanced_search_x2x = function(instance)
                   var p = this._super();
                   instance.web.bus.on('click', this, function(ev) {
                   //check if there is a class, avoid crashes
-                  if (typeof ev.target.attributes.class != 'undefined')
-                          {
-                           curr_class = ev.target.attributes.class.value;
-                           //if the class is one of the search popups defined in this module, please don't close the search view when using them.
-                           if ((curr_class == "oe_button oe_selectcreatepopup-search-select oe_highlight") || (curr_class == "oe_highlight oe_selectcreatepopup-search-select-domain"))
-                                    {
-                                     if (typeof this.$el != 'undefined'){
-                                        this.$el.addClass('oe_searchview_open_drawer');
-                                         }
-                                     }
-                          }
-                  //again, check if there is a class , avoid crashes
-                  if ((typeof ev.target.parentElement.parentElement.attributes.class != 'undefined') && (typeof this.el.className != 'undefined'))
-                          { //if the target element of the event is a search or a create or anything from the the autocomplete AND the element is part of a search view, also please don't close the searchview.
-                            if ((ev.target.parentElement.parentElement.attributes.class.value == "ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all openerp") && (this.el.className.indexOf("oe_searchview")!= -1 ))
-                            {
+                  if (( ev.target.attributes.class) &&  (typeof ev.target.attributes))
+                      {
+                       curr_class = ev.target.attributes.class.value;
+                       //if the class is one of the search popups defined in this module, please don't close the search view when using them.
+                       if ((curr_class == "oe_button oe_selectcreatepopup-search-select oe_highlight") || (curr_class == "oe_highlight oe_selectcreatepopup-search-select-domain"))
+                           {
+                            if (typeof this.$el)
+                                {
                                  this.$el.addClass('oe_searchview_open_drawer');
                                 }
-                          }
+                           }
+                      }
+                  //again, check if there are two parentelements, attributes and  a class , avoid crashes
+                  if (ev.target &&  ev.target.parentElement &&  ev.target.parentElement.parentElement &&  ev.target.parentElement.parentElement.attributes)
+                      {
+                       if ((typeof ev.target.parentElement.parentElement.attributes.class != 'undefined') && (typeof this.el.className != 'undefined'))
+                           { //if the target element of the event is a search or a create or anything from the the autocomplete AND the element is part of a search view, also please don't close the searchview.
+                            if ((ev.target.parentElement.parentElement.attributes.class.value == "ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all openerp") && (this.el.className.indexOf("oe_searchview")!= -1 ))
+                               {
+                                this.$el.addClass('oe_searchview_open_drawer');
+                               }
+                            }
+                      }
                   })
                   return $.when(p,this.ready);
               },
          });
   }
-
-
-
-

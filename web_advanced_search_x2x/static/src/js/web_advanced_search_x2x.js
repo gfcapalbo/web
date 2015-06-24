@@ -345,7 +345,6 @@ openerp.web_advanced_search_x2x = function(instance)
                                      }
                           }
                   //again, check if there is a class , avoid crashes
-                  debugger;
                   if ((typeof ev.target.parentElement.parentElement.attributes.class != 'undefined') && (typeof this.el.className != 'undefined'))
                           { //if the target element of the event is a search or a create or anything from the the autocomplete AND the element is part of a search view, also please don't close the searchview.
                             if ((ev.target.parentElement.parentElement.attributes.class.value == "ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all openerp") && (this.el.className.indexOf("oe_searchview")!= -1 ))

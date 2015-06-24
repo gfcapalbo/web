@@ -337,7 +337,10 @@ openerp.web_advanced_search_x2x = function(instance)
                       {
                        curr_class = ev.target.attributes.class.value;
                        //if the class is one of the search popups defined in this module, please don't close the search view when using them.
-                       if ((curr_class == "oe_button oe_selectcreatepopup-search-select oe_highlight") || (curr_class == "oe_highlight oe_selectcreatepopup-search-select-domain"))
+                       if ((curr_class == "oe_button oe_selectcreatepopup-search-select oe_highlight") || 
+                           (curr_class == "oe_highlight oe_selectcreatepopup-search-select-domain")    ||
+                           (curr_class == "oe_button oe_selectcreatepopup-search-close oe_bold oe_form_button_cancel") ||
+                           (curr_class == "ui-dialog-titlebar-close ui-corner-all"))
                            {
                             if (this.$el)
                                 {

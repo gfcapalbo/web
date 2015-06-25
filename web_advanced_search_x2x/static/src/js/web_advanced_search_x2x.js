@@ -333,7 +333,7 @@ openerp.web_advanced_search_x2x = function(instance)
                   var p = this._super();
                   instance.web.bus.on('click', this, function(ev) {
                   //check if there is a class, avoid crashes
-                  if (( ev.target.attributes.class) &&  (ev.target.attributes))
+                  if ((( ev.target.attributes.class) &&  (ev.target.attributes)) 
                       {
                        curr_class = ev.target.attributes.class.value;
                        //if the class is one of the search popups defined in this module, please don't close the search view when using them.
@@ -349,16 +349,19 @@ openerp.web_advanced_search_x2x = function(instance)
                            }
                       }
                   //again, check if there are two parentelements, attributes and  a class , avoid crashes
-                  if (ev.target &&  ev.target.parentElement &&  ev.target.parentElement.parentElement &&  ev.target.parentElement.parentElement.attributes)
-                      {
-                       if ((ev.target.parentElement.parentElement.attributes.class) && (this.el.className))
+                  if (ev.target &&  
+                      ev.target.parentElement &&  
+                      ev.target.parentElement.parentElement &&  
+                      ev.target.parentElement.parentElement.attributes 
+                      && ev.target.parentElement.parentElement.attributes.class 
+                      && this.el.className)
                            { //if the target element of the event is a search or a create or anything from the the autocomplete AND the element is part of a search view, also please don't close the searchview.
                             if ((ev.target.parentElement.parentElement.attributes.class.value == "ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all openerp") && (this.el.className.indexOf("oe_searchview")!= -1 ))
                                {
                                 this.$el.addClass('oe_searchview_open_drawer');
                                }
                             }
-                      }
+                      
                   })
                   return $.when(p);
               },

@@ -327,7 +327,7 @@ openerp.web_advanced_search_x2x = function(instance)
     })
 
 
-    instance.web.PermanentSearchView = instance.web.SearchView.include({
+    instance.web.SearchView.include({
         start: function()
               {   var self = this;
                   var p = this._super();
@@ -360,7 +360,7 @@ openerp.web_advanced_search_x2x = function(instance)
                             }
                       }
                   })
-                  return $.when(p,this.ready);
+                  return $.when(p);
               },
          });
   }

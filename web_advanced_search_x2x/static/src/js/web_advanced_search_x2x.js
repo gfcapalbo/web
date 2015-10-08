@@ -333,7 +333,7 @@ openerp.web_advanced_search_x2x = function(instance)
                   var p = this._super();
                   instance.web.bus.on('click', this, function(ev) {
                   //check if there is a class, avoid crashes
-                  if ((( ev.target.attributes.class) &&  (ev.target.attributes)) 
+                  if (( ev.target.attributes.class) &&  (ev.target.attributes)) 
                       {
                        curr_class = ev.target.attributes.class.value;
                        //if the class is one of the search popups defined in this module, please don't close the search view when using them.

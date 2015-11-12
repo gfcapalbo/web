@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+<t t-name="AddTreeButton">
+    <button class="oe_button oe_list_add oe_highlight oe_extrabutton">Update shipping status</button>
+</t>
+</templates>

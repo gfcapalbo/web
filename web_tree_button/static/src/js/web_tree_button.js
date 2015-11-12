@@ -26,7 +26,6 @@ openerp.web_tree_button = function (instance) {
        start: function () {
             var self = this;
             var p = this._super.apply(this, arguments);
-            debugger;
             if (self.ViewManager &&
                 self.$buttons  &&
                 self.model && self.model == 'stock.picking' &&

@@ -4,7 +4,7 @@
     <data>
         <template id="assets_backendtreebutton" name="web_tree_button assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
-                <script type="text/javascript" src="/web_tree_button/static/src/js/web_tree_button.js"></script>
+                <script type="text/javascript" src="/web_tree_button/static/src/js/web_tree_scheduler_button.js"></script>
             </xpath>
         </template>
     </data>

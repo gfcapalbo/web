@@ -18,10 +18,9 @@
 //    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //#############################################################################
-openerp.web_tree_button = function (instance) {
+openerp.web_tree_scheduler_button = function (instance) {
 
     var _t = instance.web._t, QWeb = instance.web.qweb;
-    var last_update='';
     
     instance.web.View.include({
         start: function () 
@@ -30,6 +29,7 @@ openerp.web_tree_button = function (instance) {
             return this._super.apply(this, arguments)
             .then(function()
             {
+                debugger; 
                 if (self.ViewManager &&
                         self.$buttons  &&
                         self.model && self.model == 'stock.picking' &&

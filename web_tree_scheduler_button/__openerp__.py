@@ -20,7 +20,7 @@
 ##############################################################################
 
 {
-    'name': 'Add Scheduler  button to tree header',
+    'name': 'Add Scheduler button to tree header',
     'version': '8.0.1.2.0',
     'category': 'Web',
     'author': "Therp nl",

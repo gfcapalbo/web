@@ -21,24 +21,32 @@
 openerp.web_tree_button = function (instance) {
 
     var _t = instance.web._t, QWeb = instance.web.qweb;
-
+    var last_update='';
+    
     instance.web.View.include({
        start: function () {
-            var self = this;
-            var p = this._super.apply(this, arguments);
-            if (self.ViewManager &&
-                self.$buttons  &&
-                self.model && self.model == 'stock.picking' &&
-                self.ViewManager.active_view == 'list')
-            {   
-               self.$buttons.append(QWeb.render('AddTreeButton', {widget: self}));
-               self.$buttons.find('.oe_extrabutton').on('click', self.perform_button_action);
-            }
-            return $.when(p);
+            var self = this
+            return this._super.apply(this, arguments)
+            .then(function()
+            {
+                if (self.ViewManager &&
+                        self.$buttons  &&
+                        self.model && self.model == 'stock.picking' &&
+                        self.ViewManager.active_view == 'list')
+                        {   
+                           self.$buttons.append(QWeb.render('AddTreeButton', {widget: self}));
+                           self.$buttons.find('.oe_extrabutton').on('click', self.proxy('perform_button_action'));
+
+                        }
+            })
         },
-
-        perform_button_action: {},
-
+        perform_button_action:  function() {
+            var self = this;
+            debugger;
+            var upd = new instance.web.Model("procurement.order.compute.all");
+            upd.call("procure_calculation" ,  [[]], {});
+            ir_config_parameter = new openerp.web.Model('ir.config_parameter');
+        },
     });
 
 }

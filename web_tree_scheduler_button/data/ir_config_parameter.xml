@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data noupdate="0">
+        <record id="config_parameter_last_scheduler_update" model="ir.config_parameter">
+            <field name="key">web_tree_scheduler_button.last_scheduler_update</field>
+            <field name="value">Never updated since module installation</field>
+        </record>
+    </data>
+</openerp>
+
+
+

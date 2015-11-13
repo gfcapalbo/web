@@ -29,7 +29,6 @@ openerp.web_tree_scheduler_button = function (instance) {
             return this._super.apply(this, arguments)
             .then(function()
             {
-                debugger; 
                 if (self.ViewManager &&
                         self.$buttons  &&
                         self.model && self.model == 'stock.picking' &&

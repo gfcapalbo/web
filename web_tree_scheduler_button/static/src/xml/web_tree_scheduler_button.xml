@@ -3,6 +3,6 @@
 <templates id="template" xml:space="preserve">
     <t t-name="AddTreeButton">
         <button class="oe_button oe_extrabutton">Update all statuses</button>
-        <p style="font-size: 10px; line-height: 5%" id="dateplace"> </p>
+        <p style="font-size: 10px; line-height: 100%" id="dateplace"> </p>
     </t>
 </templates>

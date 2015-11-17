@@ -1,6 +1,7 @@
 //  @@@ web_export_view custom JS @@@
 //#############################################################################
 //    
+//    Copyright (C) 2012 Agile Business Group sagl (<http://www.agilebg.com>)
 //    Copyright (C) 2012 Therp BV (<http://therp.nl>)
 //
 //    This program is free software: you can redistribute it and/or modify
@@ -42,10 +43,22 @@ openerp.web_tree_scheduler_button = function (instance) {
         perform_button_action:  function() 
         {
             var self = this;
-            var upd = new instance.web.Model("procurement.order.compute.all");
+            var upd = new instance.web.Model("stock.picking");
             self.waiting();
-            return upd.call("procure_calculation" ,  [[]], {})
-                .then(self.proxy('getLastUpdate'));
+            return upd.call('search_read',[],
+                    {
+                       domain: [['state' ,'=', 'waiting']],
+                       fields: ['id'],
+                    })
+                    .then( function (pickings)
+                        {
+                        var pick_ids = [];
+                        for (var i = 0; i < pickings.length; i++) {
+                            pick_ids.push(pickings[i].id)
+                            }
+                        upd.call("action_assign" ,  [pick_ids], {})
+                        .then(self.proxy('getLastUpdate'));
+                        });
         },
 
         getLastUpdate: function()

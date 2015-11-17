@@ -22,13 +22,15 @@ from datetime import datetime as dt
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 
-class ProcurementOrderComputeAll(models.TransientModel):
-    _inherit = 'procurement.order.compute.all'
+class StockPicking(models.Model):
+    _inherit = 'stock.picking'
 
     @api.multi
-    def procure_calculation(self):
-        res = super(ProcurementOrderComputeAll, self).procure_calculation()
+    def action_assign(self):
+        for pick in self:
+            import pudb; pudb.set_trace()
+            if pick.picking_type_id.id == 2:
+                res = super(StockPicking, pick).action_assign()
         self.env['ir.config_parameter'].set_param(
             key='web_tree_scheduler_button.last_scheduler_update',
             value=dt.strftime(dt.now(), DEFAULT_SERVER_DATETIME_FORMAT))
-        return res

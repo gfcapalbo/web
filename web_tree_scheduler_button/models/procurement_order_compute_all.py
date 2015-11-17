@@ -26,11 +26,10 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     @api.multi
-    def action_assign(self):
+    def rereserve_pick_outgoing(self):
         for pick in self:
-            import pudb; pudb.set_trace()
             if pick.picking_type_id.id == 2:
-                res = super(StockPicking, pick).action_assign()
+                pick.rereserve_pick()
         self.env['ir.config_parameter'].set_param(
             key='web_tree_scheduler_button.last_scheduler_update',
             value=dt.strftime(dt.now(), DEFAULT_SERVER_DATETIME_FORMAT))

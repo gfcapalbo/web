@@ -56,7 +56,7 @@ openerp.web_tree_scheduler_button = function (instance) {
                         for (var i = 0; i < pickings.length; i++) {
                             pick_ids.push(pickings[i].id)
                             }
-                        upd.call("action_assign" ,  [pick_ids], {})
+                        upd.call("rereserve_pick_outgoing" ,  [pick_ids], {})
                         .then(self.proxy('getLastUpdate'));
                         });
         },

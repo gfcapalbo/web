@@ -50,16 +50,20 @@ openerp.web_tree_scheduler_button = function (instance) {
                        domain: [['state' ,'=', 'waiting']],
                        fields: ['id'],
                     })
-                    .then( function (pickings)
-                        {
-                        var pick_ids = [];
-                        for (var i = 0; i < pickings.length; i++) {
-                            pick_ids.push(pickings[i].id)
-                            }
-                        upd.call("rereserve_pick_outgoing" ,  [pick_ids], {})
-                        .then(self.proxy('getLastUpdate'))
-                        .then(self.ViewManager.do_searchview_search());
-                        });
+            .then(function(pickings)
+            {
+                var pick_ids = [];
+                for (var i = 0; i < pickings.length; i++)
+                {
+                    pick_ids.push(pickings[i].id)
+                }
+                return upd.call("rereserve_pick_outgoing" ,  [pick_ids], {})
+                .then(self.proxy('getLastUpdate'))
+            })
+            .then(function()
+            {
+                self.ViewManager.searchview.do_search();
+            });
         },
 
         getLastUpdate: function()

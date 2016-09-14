@@ -20,7 +20,7 @@
 ##############################################################################
 {
     "name": "Search x2x fields",
-    "version": "8.0.1.0.0",
+    "version": "7.0.1.0.0",
     "author": "Therp BV, "
               "Odoo Community Association (OCA)",
     "description": """

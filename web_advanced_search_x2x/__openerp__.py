@@ -20,7 +20,7 @@
 ##############################################################################
 {
     "name": "Search x2x fields",
-    "version": "1.0",
+    "version": "8.0.1.0.0",
     "author": "Therp BV, "
               "Odoo Community Association (OCA)",
     "description": """
@@ -42,6 +42,9 @@ domain popups.
     "summary": "Use a search widget in advanced search for x2x fields",
     "depends": [
         'web',
+    ],
+    "data": [
+        'views/templates.xml',
     ],
     "qweb": [
         'static/src/xml/web_advanced_search_x2x.xml',

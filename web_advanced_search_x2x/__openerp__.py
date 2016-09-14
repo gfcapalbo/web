@@ -48,12 +48,7 @@ domain popups.
     ],
     'js': ['static/src/js/*.js'],
     'css': ['static/src/css/*.css'],
-    "test": [
-    ],
     "auto_install": False,
     "installable": True,
     "application": False,
-    "external_dependencies": {
-        'python': [],
-    },
 }

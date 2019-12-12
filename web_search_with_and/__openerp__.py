@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# © 2015 Andrius Preimantas <andrius@versada.lt>
+# Copyright 2015 Andrius Preimantas <andrius@versada.lt>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {

@@ -171,7 +171,7 @@ var translateDialog = Dialog.extend({
                 return new data.DataSet(self, self.view.dataset.model,
                                         self.view.dataset.get_context()).write(
                                         self.view.datarecord.id, text,
-                                        { context : { 'lang': code }});
+                                        { context : { 'lang': code , 'is_translator_interface': 'yes'}});
             });
         });
         this.close();

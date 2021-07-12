@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="assets_backend" name="web_translate_dialog_enforcement_assets"
+            inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript"
+                    src="/web_translate_dialog_enforcement/static/src/js/web_translate_dialog_enforcement.js"/>
+            <link rel="stylesheet" type="text/less" href="/web_translate_dialog_enforcement/static/src/less/web_translate_dialog_enforcement.less"/>
+        </xpath>
+    </template>
+</odoo>
